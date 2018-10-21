@@ -8,10 +8,13 @@
 
 <script>
 // @ is an alias to /src
-import Test from '../components/test'
+import Test from '@/components/test'
 
 export default {
   name: 'home',
+  mounted() {
+    // this.sayHi();
+  },
   data() {
     return {
       msg: '来自父页面',
@@ -34,6 +37,9 @@ export default {
   methods: {
     changeWithParent(val) {
       this.msg = val;
+    },
+    sayHi() {
+      alert('hi!');
     }
   },
   components: {
