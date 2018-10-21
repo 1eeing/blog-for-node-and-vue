@@ -1,17 +1,42 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Test v-bind:msg="msg" v-bind:content="ptc" v-on:changeWithParent="change" />
+    <span>父页面：{{msg}}</span>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Test from './components/test/index';
 
 export default {
   name: 'app',
+  data () {
+    return {
+      msg: '来自父页面',
+      ptc: [
+        {
+          content: '我是来自父页面的数据1',
+          id: 1
+        },
+        {
+          content: '我是来自父页面的数据2',
+          id: 2
+        },
+        {
+          content: '我是来自父页面的数据3',
+          id: 3
+        }
+      ]
+    };
+  },
   components: {
-    HelloWorld
+    Test
+  },
+  methods: {
+    change(val) {
+      this.msg = val;
+    }
   }
 }
 </script>
